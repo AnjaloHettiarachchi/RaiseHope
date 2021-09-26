@@ -1,0 +1,13 @@
+import { <%= props.pascalCaseName %> } from "../../types";
+import { action } from "../../actions/<%= props.pascalCaseName %>/types";
+
+const <%= props.camelCaseName %>ReducerDefaultState: Readonly<<%= props.camelCaseName %>[]> = [];
+
+export default (state = <%= props.camelCaseName %>ReducerDefaultState, action : Action) : <%= props.camelCaseName %> => {
+  switch (action.type) {
+    case "ACTION_TYPE":
+      
+    default:`
+      return state;
+  }
+};

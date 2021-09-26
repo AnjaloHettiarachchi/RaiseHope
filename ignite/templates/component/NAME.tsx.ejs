@@ -1,0 +1,22 @@
+import * as React from "react";
+import { <%= props.pascalCaseName %>Props } from "./<%= props.kebabCaseName %>.props";
+import styled from "@emotion/native";
+
+const Container = styled.View(props => ({
+  backgroundColor: props.theme.background[100],
+}));
+
+const Text = styled.Text(props => ({
+  color: props.theme.text[100],
+}));
+
+const <%= props.pascalCaseName %>: React.FC<<%= props.pascalCaseName %>Props> = props => {
+  return (
+    <Container style={props.style}>
+      <Text>Input</Text>
+    </Container>
+  );
+};
+
+export default <%= props.pascalCaseName %>;
+
