@@ -7,7 +7,6 @@ import Screen from "../../components/screen/screen";
 import { startSignOut } from "../../actions/auth/auth";
 import { connect } from "react-redux";
 import { spacing } from "../../theme";
-import { translate } from "../../i18n";
 import styled from "@emotion/native";
 import Button from "../../components/button/button";
 import { HomeProps } from "./home.props";
@@ -33,7 +32,7 @@ function HomeScreen(props: HomeProps) {
         <LogoutButton kind="secondary" onPress={() => props.signOut()}>
           Log Out
         </LogoutButton>
-        <WelcomeTitle>{`${translate("homeScreen.title")}, ${
+        <WelcomeTitle>{`Welcome, ${
           props.name
         }!`}</WelcomeTitle>
         <FiltersForm />

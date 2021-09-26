@@ -1,45 +1,42 @@
-import { Green, Neutral, Primary, Red, Text, Yellow } from "../types/colors";
+import { Colors } from "../types/colors";
 
-export const primary: Primary = {
-  100: "#63A789",
-  200: "#509D53",
-  300: "#0C5844",
-  400: "#F7611D",
-  500: "#F85131",
-};
+export default {
+  white: "#FFFFFF",
+  black: "#000000",
 
-export const text: Text = {
-  100: "#1D1D1C",
-  200: "#41413D",
-  300: "#777774",
-  400: "#EEEEEE",
-  500: "#D4D4D4",
-  600: "#A1A1A1",
-};
+  blue: {
+    100: "#BBDEFB",
+    200: "#90CAF9",
+    300: "#64B5F6",
+    400: "#42A5F5",
+    500: "#2196F3",
+    600: "#1E88E5",
+    700: "#1976D2",
+    800: "#1565C0",
+    900: "#0D47A1",
+  },
 
-export const neutral: Neutral = {
-  100: "#F8E7D4",
-  200: "#F8E3CA",
-  300: "#F6D8AD",
-  400: "#181E20",
-  500: "#111516",
-  600: "#030404",
-};
+  blueGrey: {
+    100: "#CFD8DC",
+    200: "#B0BEC5",
+    300: "#90A4AE",
+    400: "#78909C",
+    500: "#607D8B",
+    600: "#546E7A",
+    700: "#455A64",
+    800: "#37474F",
+    900: "#263238",
+  },
 
-export const green: Green = {
-  100: "#529e66",
-  200: "#367b48",
-  300: "#276738",
-};
-
-export const yellow: Yellow = {
-  100: "#e1c542",
-  200: "#cab23f",
-  300: "#b49e35",
-};
-
-export const red: Red = {
-  100: "#d0454c",
-  200: "#b54248",
-  300: "#95353a",
-};
+  red: {
+    100: "#FFCDD2",
+    200: "#FFCDD2",
+    300: "#E57373",
+    400: "#EF5350",
+    500: "#F44336",
+    600: "#E53935",
+    700: "#D32F2F",
+    800: "#C62828",
+    900: "#B71C1C",
+  },
+} as Colors;

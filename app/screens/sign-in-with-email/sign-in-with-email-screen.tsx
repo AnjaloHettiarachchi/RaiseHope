@@ -6,7 +6,6 @@ import Screen from "../../components/screen/screen";
 import LoadingButton from "../../components/loading-button/loading-button";
 import { startSignIn, updateError } from "../../actions/auth/auth";
 import { connect } from "react-redux";
-import { translate } from "../../i18n";
 import { spacing } from "../../theme";
 import styled from "@emotion/native";
 import { SignInWithEmailProps } from "./sign-in-with-email";
@@ -50,11 +49,11 @@ function SignInWithEmailScreen(props: SignInWithEmailProps) {
   return (
     <Screen>
       <Container>
-        <Title>{translate("signInWithEmailScreen.title")}</Title>
+        <Title>{"signInWithEmailScreen.title"}</Title>
         <SignInInput
           value={email}
           onChangeText={setEmail}
-          placeholder={translate("common.placeholder.email")}
+          placeholder={"common.placeholder.email"}
           autoCompleteType="email"
           autoFocus
           keyboardType="email-address"
@@ -64,7 +63,7 @@ function SignInWithEmailScreen(props: SignInWithEmailProps) {
         <SignInInput
           value={password}
           onChangeText={setPassword}
-          placeholder={translate("common.placeholder.password")}
+          placeholder={"common.placeholder.password"}
           autoCompleteType="password"
           textContentType="password"
           secureTextEntry
@@ -75,19 +74,17 @@ function SignInWithEmailScreen(props: SignInWithEmailProps) {
           onPress={() => props.signIn(email, password)}
           disabled={!email || !password}
         >
-          {translate("common.signIn")}
+          {"common.signIn"}
         </SignInButton>
         <SignUpMessage>
-          <SignUpText>
-            {translate("signInWithEmailScreen.signUpMessage")}
-          </SignUpText>
+          <SignUpText>{"signInWithEmailScreen.signUpMessage"}</SignUpText>
           <TouchableOpacity
             onPress={() => {
               props.clearError();
               props.navigation.push("SignUpWithEmail");
             }}
           >
-            <SignUpButton>{translate("common.signUp")}</SignUpButton>
+            <SignUpButton>{"common.signUp"}</SignUpButton>
           </TouchableOpacity>
         </SignUpMessage>
       </Container>

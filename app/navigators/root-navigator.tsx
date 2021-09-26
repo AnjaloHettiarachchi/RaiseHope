@@ -1,5 +1,8 @@
 import React from "react";
-import { NavigationContainer, NavigationContainerRef } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  NavigationContainerRef,
+} from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { MainNavigator } from "./main-navigator";
 import { AuthNavigator } from "./auth-navigator";

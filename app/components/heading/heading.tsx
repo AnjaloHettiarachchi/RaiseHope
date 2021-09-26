@@ -11,11 +11,11 @@ const Container = styled.View(() => ({
 interface TextProps {
   fontSize: number;
 }
+
 const Text = styled.Text<TextProps>(props => ({
   fontFamily: typography.primary.bold,
   fontSize: props.fontSize,
-  color: props.theme.text[100],
-  fontWeight: "bold",
+  color: props.theme.palette.white,
 }));
 
 const Heading: React.FC<HeadingProps> = ({ children, scale = 1, style }) => {

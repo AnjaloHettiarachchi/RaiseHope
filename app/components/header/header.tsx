@@ -1,14 +1,11 @@
 import * as React from "react";
 import { HeaderProps } from "./header.props";
-import { Text, TextStyle, TouchableOpacity, View, ViewStyle } from "react-native";
+import { TouchableOpacity, View, ViewStyle } from "react-native";
 import { spacing } from "../../theme";
+import { AntDesign } from "@expo/vector-icons";
 
 const CONTAINER: ViewStyle = {
   paddingHorizontal: spacing[5],
-};
-
-const BACK_BUTTION: TextStyle = {
-  fontSize: spacing[6],
 };
 
 const Header: React.FC<HeaderProps> = props => {
@@ -17,7 +14,7 @@ const Header: React.FC<HeaderProps> = props => {
   return (
     <View style={[CONTAINER, style]}>
       <TouchableOpacity onPress={() => handleBackButtonClick()}>
-        <Text style={BACK_BUTTION}>{"👈🏻"}</Text>
+        <AntDesign size={spacing[6]} color="white" name="arrowleft" />
       </TouchableOpacity>
     </View>
   );

@@ -7,7 +7,6 @@ import { Todo } from "../../types";
 import { filterTodos } from "../../selectors/todos";
 import { startSetTodos } from "../../actions/todos/todos";
 import { spacing } from "../../theme";
-import { translate } from "../../i18n";
 import Heading from "../heading/heading";
 import TodoItem from "../todo-item/todo-item";
 
@@ -43,7 +42,7 @@ export const TodoList: React.FC<TodoListProps> = props => {
   return (
     <Container style={style}>
       <SubHeading scale={3}>
-        {translate("homeScreen.subtitle.todayTasks")}
+        {("homeScreen.subtitle.todayTasks")}
       </SubHeading>
       <Todos
         data={props.todos}

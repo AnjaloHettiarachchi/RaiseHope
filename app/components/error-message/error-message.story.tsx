@@ -1,6 +1,12 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react-native";
-import { Docs, PropsData, Story, StoryScreen, UseCase } from "../../../storybook/views";
+import {
+  Docs,
+  PropsData,
+  Story,
+  StoryScreen,
+  UseCase,
+} from "../../../storybook/views";
 import ErrorMessage from "./error-message";
 
 declare let module: any;

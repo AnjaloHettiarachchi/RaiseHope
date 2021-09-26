@@ -7,7 +7,6 @@ import CategoryButton from "../category-button/category-button";
 import { connect } from "react-redux";
 import { updateFilterBy, updateSortBy } from "../../actions/filters/filters";
 import { calculateTodosCount } from "../../selectors/todos";
-import { translate } from "../../i18n";
 import styled from "@emotion/native";
 import Button from "../button/button";
 
@@ -37,7 +36,7 @@ const FiltersForm: React.FC<FiltersFormProps> = props => {
           return (
             <CategoryButton
               key={category}
-              text={translate(`todos.categories.${category}`)}
+              text={`todos.categories.${category}`}
               todosCompleted={props.todosCount[category].completed}
               todosNumber={props.todosCount[category].total}
               handleClick={() => props.updateFilterBy(category)}
@@ -51,16 +50,14 @@ const FiltersForm: React.FC<FiltersFormProps> = props => {
       />
       <SortOptions>
         <SortButton
-          kind="tertiary"
-          onPress={() => props.updateSortBy("nameAsc")}
-        >
-          {translate("sortBy.asc")}
+          type="default"
+          onPress={() => props.updateSortBy("nameAsc")}>
+          {"sortBy.asc"}
         </SortButton>
         <SortButton
-          kind="tertiary"
-          onPress={() => props.updateSortBy("nameDes")}
-        >
-          {translate("sortBy.des")}
+          type="default"
+          onPress={() => props.updateSortBy("nameDes")}>
+          {"sortBy.des"}
         </SortButton>
       </SortOptions>
     </View>

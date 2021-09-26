@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import Heading from "../heading/heading";
 import { startAddTodo } from "../../actions/todos/todos";
 import { TodoData } from "../../actions/todos/types";
-import { translate } from "../../i18n";
 import styled from "@emotion/native";
 import Input from "../input/input";
 import Button from "../button/button";
@@ -68,7 +67,7 @@ const NewTodoForm: React.FC<NewTodoFormProps> = props => {
   return (
     <Container style={props.style}>
       <SubHeading scale={3}>
-        {translate("homeScreen.subtitle.newTask")}
+        {("homeScreen.subtitle.newTask")}
       </SubHeading>
       <Form>
         <InputContainer>

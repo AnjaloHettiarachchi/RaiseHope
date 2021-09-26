@@ -5,21 +5,21 @@ export const lightTheme: ThemeInterface = {
   palette,
   transparent: "rgba(0, 0, 0, 0)",
   background: {
-    100: palette.neutral[100],
-    200: palette.neutral[200],
-    300: palette.neutral[300],
+    100: palette.white,
+    200: palette.white,
+    300: palette.white,
   },
   text: {
-    100: palette.text[100],
-    200: palette.text[200],
-    300: palette.text[300],
+    100: palette.blueGrey[300],
+    200: palette.blueGrey[400],
+    300: palette.blueGrey[500],
   },
   primary: palette.primary,
-  error: palette.red,
+  error: palette.red[900],
   category: {
     work: palette.primary[100],
     personal: palette.primary[400],
-    all: palette.text[100],
+    all: palette.blueGrey[500],
   },
 };
 
@@ -27,20 +27,20 @@ export const darkTheme: ThemeInterface = {
   palette,
   transparent: "rgba(0, 0, 0, 0)",
   background: {
-    100: palette.neutral[400],
-    200: palette.neutral[500],
-    300: palette.neutral[600],
+    100: palette.blue[700],
+    200: palette.blue[800],
+    300: palette.blue[900],
   },
   text: {
-    100: palette.text[400],
-    200: palette.text[500],
-    300: palette.text[600],
+    100: palette.blueGrey[100],
+    200: palette.blueGrey[200],
+    300: palette.blueGrey[300],
   },
   primary: palette.primary,
-  error: palette.red,
+  error: palette.red[900],
   category: {
     work: palette.primary[100],
     personal: palette.primary[400],
-    all: palette.text[100],
+    all: palette.blueGrey[100],
   },
 };

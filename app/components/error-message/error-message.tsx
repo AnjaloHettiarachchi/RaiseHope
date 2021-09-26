@@ -11,7 +11,7 @@ const Container = styled.View(() => ({
 const Text = styled.Text(props => ({
   fontFamily: typography.primary.bold,
   fontSize: 15,
-  color: props.theme.error[100],
+  color: props.theme.error,
   fontWeight: "600",
   letterSpacing: 1.5,
 }));

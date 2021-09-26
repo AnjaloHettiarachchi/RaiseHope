@@ -1,10 +1,9 @@
-import { Green, Neutral, Primary, Red, Text, Yellow } from "./colors";
+import { Colors } from "./colors";
 
-export interface Palette {
-  primary: Primary;
-  text: Text;
-  neutral: Neutral;
-  red: Red;
-  yellow: Yellow;
-  green: Green;
-}
+export type Palette = {
+  [color in keyof Colors]: Colors[color];
+} & {
+  primary: string;
+  secondary: string;
+  accent: string;
+};

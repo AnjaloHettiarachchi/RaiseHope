@@ -1,5 +1,5 @@
 import React from "react";
-import { useCredentialsFields } from "../../hooks/useCredentialsFields";
+import { useCredentialsFields } from "../../hooks";
 import Heading from "../../components/heading/heading";
 import Input from "../../components/input/input";
 import Screen from "../../components/screen/screen";
@@ -7,7 +7,6 @@ import LoadingButton from "../../components/loading-button/loading-button";
 import { startSignUp } from "../../actions/auth/auth";
 import { connect } from "react-redux";
 import { spacing } from "../../theme";
-import { translate } from "../../i18n";
 import styled from "@emotion/native";
 import { SignUpWithEmailProps } from "./sign-up-with-email";
 
@@ -33,26 +32,27 @@ function SignUpWithEmailScreen(props: SignUpWithEmailProps) {
   return (
     <Screen>
       <Container>
-        <Title>{translate("signUpWithEmailScreen.title")}</Title>
+        <Title>Sign Up</Title>
         <SignUpInput
           value={credentialsFields.email.value}
           onChangeText={credentialsFields.email.update}
-          label={translate("common.email").toLocaleUpperCase()}
-          placeholder={translate("common.placeholder.email")}
+          label="Email Address"
+          placeholder="john.doe@example.com"
           autoCompleteType="email"
           keyboardType="email-address"
           textContentType="emailAddress"
           autoCapitalize="none"
+          returnKeyType="next"
           error={
             !!credentialsFields.email.value && !credentialsFields.email.isValid
           }
-          errorMessage={translate("errors.invalidEmail")}
+          errorMessage="Invalid Email Address"
         />
         <SignUpInput
           value={credentialsFields.password.value}
           onChangeText={credentialsFields.password.update}
-          label={translate("common.password").toLocaleUpperCase()}
-          placeholder={translate("common.placeholder.password")}
+          label="Password"
+          placeholder="secret"
           autoCompleteType="password"
           textContentType="password"
           secureTextEntry
@@ -60,7 +60,7 @@ function SignUpWithEmailScreen(props: SignUpWithEmailProps) {
             !!credentialsFields.password.value &&
             !credentialsFields.password.isValid
           }
-          errorMessage={translate("errors.invalidPassword")}
+          errorMessage="Invalid Password"
         />
         <SignUpButton
           isLoading={props.isLoading}
@@ -76,9 +76,8 @@ function SignUpWithEmailScreen(props: SignUpWithEmailProps) {
             !credentialsFields.password.value ||
             !credentialsFields.password.isValid ||
             !credentialsFields.email.isValid
-          }
-        >
-          {translate("common.signUp")}
+          }>
+          Create Account
         </SignUpButton>
       </Container>
     </Screen>

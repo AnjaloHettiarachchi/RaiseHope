@@ -1,4 +1,3 @@
-import { Primary, Red } from "./colors";
 import { Palette } from "./palette";
 
 export interface ThemeInterface {
@@ -21,7 +20,7 @@ export interface ThemeInterface {
   /**
    * The main tinting color.
    */
-  primary: Primary;
+  primary: string;
   /**
    * The default color of text in many components.
    */
@@ -33,7 +32,7 @@ export interface ThemeInterface {
   /**
    * Error messages and icons.
    */
-  error: Red;
+  error: string;
   /**
    * Colors for categories
    */
