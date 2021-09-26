@@ -92,8 +92,7 @@ export const TodoItem: React.FC<TodoProps> = props => {
         onPress={() => props.handleClickRemove(id)}
         category={type}
         kind="primary"
-        fontSize={30}
-      >
+        fontSize={30}>
         🗑
       </DeleteButton>
     </Container>

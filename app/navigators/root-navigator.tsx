@@ -21,8 +21,7 @@ const RootStack = (props: any) => {
       screenOptions={{
         cardStyle: { backgroundColor: "transparent" },
         headerShown: false,
-      }}
-    >
+      }}>
       {props.isSignedIn ? (
         <Stack.Screen name="mainStack" component={MainNavigator} />
       ) : (

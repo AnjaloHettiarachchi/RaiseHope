@@ -15,8 +15,7 @@ export function MainNavigator() {
         cardStyle: { backgroundColor: "transparent" },
         headerShown: false,
       }}
-      initialRouteName="home"
-    >
+      initialRouteName="home">
       <Stack.Screen name="home" component={HomeScreen} />
     </Stack.Navigator>
   );

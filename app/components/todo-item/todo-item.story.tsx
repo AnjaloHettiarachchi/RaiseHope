@@ -56,8 +56,7 @@ storiesOf("TodoItem", module)
       <UseCase
         noPad
         title="TodoItem types"
-        description="TodoItem with work type and personal type"
-      >
+        description="TodoItem with work type and personal type">
         <Toggle initial={false}>
           {({ on, toggle }) => (
             <TodoItem

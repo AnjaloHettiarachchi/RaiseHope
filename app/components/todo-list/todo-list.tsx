@@ -41,9 +41,7 @@ export const TodoList: React.FC<TodoListProps> = props => {
 
   return (
     <Container style={style}>
-      <SubHeading scale={3}>
-        {("homeScreen.subtitle.todayTasks")}
-      </SubHeading>
+      <SubHeading scale={3}>{"homeScreen.subtitle.todayTasks"}</SubHeading>
       <Todos
         data={props.todos}
         renderItem={(todo: any) => <TodoItem {...todo.item} />}

@@ -72,8 +72,7 @@ function SignInWithEmailScreen(props: SignInWithEmailProps) {
           isLoading={props.isLoading}
           error={props.error}
           onPress={() => props.signIn(email, password)}
-          disabled={!email || !password}
-        >
+          disabled={!email || !password}>
           {"common.signIn"}
         </SignInButton>
         <SignUpMessage>
@@ -82,8 +81,7 @@ function SignInWithEmailScreen(props: SignInWithEmailProps) {
             onPress={() => {
               props.clearError();
               props.navigation.push("SignUpWithEmail");
-            }}
-          >
+            }}>
             <SignUpButton>{"common.signUp"}</SignUpButton>
           </TouchableOpacity>
         </SignUpMessage>

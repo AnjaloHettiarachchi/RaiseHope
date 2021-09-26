@@ -32,9 +32,7 @@ function HomeScreen(props: HomeProps) {
         <LogoutButton kind="secondary" onPress={() => props.signOut()}>
           Log Out
         </LogoutButton>
-        <WelcomeTitle>{`Welcome, ${
-          props.name
-        }!`}</WelcomeTitle>
+        <WelcomeTitle>{`Welcome, ${props.name}!`}</WelcomeTitle>
         <FiltersForm />
         <NewTodoForm />
         <TodoList />

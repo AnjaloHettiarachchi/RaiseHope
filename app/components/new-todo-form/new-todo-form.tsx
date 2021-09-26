@@ -66,9 +66,7 @@ const NewTodoForm: React.FC<NewTodoFormProps> = props => {
 
   return (
     <Container style={props.style}>
-      <SubHeading scale={3}>
-        {("homeScreen.subtitle.newTask")}
-      </SubHeading>
+      <SubHeading scale={3}>{"homeScreen.subtitle.newTask"}</SubHeading>
       <Form>
         <InputContainer>
           <TextInput value={description} onChangeText={setDescription} />
@@ -76,15 +74,13 @@ const NewTodoForm: React.FC<NewTodoFormProps> = props => {
         <SubmitButton
           category="personal"
           disabled={!description}
-          onPress={() => handleSubmitTodo("personal")}
-        >
+          onPress={() => handleSubmitTodo("personal")}>
           +
         </SubmitButton>
         <SubmitButton
           category="work"
           disabled={!description}
-          onPress={() => handleSubmitTodo("work")}
-        >
+          onPress={() => handleSubmitTodo("work")}>
           +
         </SubmitButton>
       </Form>

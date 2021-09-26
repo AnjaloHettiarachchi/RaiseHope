@@ -1,6 +1,10 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { SignInWithEmailScreen, SignUpWithEmailScreen, WelcomeScreen } from "../screens";
+import {
+  SignInWithEmailScreen,
+  SignUpWithEmailScreen,
+  WelcomeScreen,
+} from "../screens";
 
 export type PrimaryParamList = {
   Welcome: undefined;
@@ -17,8 +21,7 @@ export function AuthNavigator() {
         cardStyle: { backgroundColor: "transparent" },
         headerShown: false,
       }}
-      initialRouteName="Welcome"
-    >
+      initialRouteName="Welcome">
       <Stack.Screen name="Welcome" component={WelcomeScreen} />
       <Stack.Screen name="SignInWithEmail" component={SignInWithEmailScreen} />
       <Stack.Screen name="SignUpWithEmail" component={SignUpWithEmailScreen} />
