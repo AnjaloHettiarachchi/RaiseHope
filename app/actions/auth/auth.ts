@@ -1,6 +1,9 @@
 import { to } from "../../utils/to";
 import { Error, Status } from "../../types/auth";
-import * as authApi from "../../services/auth-api";
+import { authApi } from "../../services";
+
+import { firebase } from "../../firebase/firebase";
+import { doLoadProfile } from "../profile/profile";
 
 export const updateStatus = (status: Status) => ({
   type: "UPDATE_STATUS",
@@ -16,12 +19,17 @@ export const updateError = (error: Error) => ({
   },
 });
 
-export const signIn = (user: any) => ({
+export const signIn = (user: firebase.User) => ({
   type: "SIGN_IN",
   payload: {
     user,
   },
 });
+
+const handlerError = (dispatch: any, error: string) => {
+  dispatch(updateStatus("failed"));
+  dispatch(updateError(error));
+};
 
 export const startSignIn = (email: string, password: string) => {
   return async (dispatch: any) => {
@@ -32,12 +40,9 @@ export const startSignIn = (email: string, password: string) => {
       password,
     );
 
-    if (error) {
-      dispatch(updateStatus("failed"));
-      dispatch(updateError(error.message));
-      return;
-    }
+    if (error) return handlerError(dispatch, error.message);
 
+    await dispatch(doLoadProfile(userCredential.user.uid));
     dispatch(updateStatus("succeeded"));
     dispatch(updateError(null));
     dispatch(signIn(userCredential.user));
@@ -54,11 +59,7 @@ export const startSignUp = (email: string, password: string) => {
       password,
     );
 
-    if (error) {
-      dispatch(updateStatus("failed"));
-      dispatch(updateError(error.message));
-      return;
-    }
+    if (error) return handlerError(dispatch, error.message);
 
     dispatch(updateStatus("succeeded"));
     dispatch(updateError(null));
@@ -111,11 +112,7 @@ export const startSignInWithGoogle = () => {
 
     const [error, userCredential] = await authApi.signInWithGoogle(accessToken);
 
-    if (error) {
-      dispatch(updateStatus("failed"));
-      dispatch(updateError(error.message));
-      return;
-    }
+    if (error) return handlerError(dispatch, error.message);
 
     dispatch(updateStatus("succeeded"));
     dispatch(updateError(null));
@@ -150,7 +147,7 @@ export const signOut = () => ({
 
 export const startSignOut = () => {
   return async (dispatch: any) => {
-    authApi.signOut();
+    await authApi.signOut();
     dispatch(signOut());
   };
 };

@@ -7,7 +7,10 @@ const authReducerDefaultState: Readonly<Auth> = {
   error: null,
 };
 
-export default (state = authReducerDefaultState, action: Action): Auth => {
+export const authReducer = (
+  state = authReducerDefaultState,
+  action: Action,
+): Auth => {
   switch (action.type) {
     case "SIGN_IN":
       return { ...state, user: action.payload.user };

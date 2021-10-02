@@ -4,9 +4,9 @@ export interface ButtonProps extends TouchableOpacityProps {
   /**
    * kinds of button, defaults to "primary"
    */
-  kind?: "primary" | "secondary" | "tertiary";
+  type?: "default" | "ghost" | "outline";
   /**
-   * the button text font size, defaults to 14s
+   * the button text font size, defaults to 16s
    */
   fontSize?: number;
   /**

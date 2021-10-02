@@ -9,4 +9,8 @@ export interface ScreenProps {
    * Container style overrides
    */
   style?: ViewStyle;
+  /**
+   * Screen title for Header
+   */
+  title?: string;
 }

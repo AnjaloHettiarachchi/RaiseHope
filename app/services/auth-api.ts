@@ -1,4 +1,8 @@
-import { FACEBOOK_APP_ID, GOOGLE_ANDROID_CLIENT_ID, GOOGLE_IOS_CLIENT_ID } from "@env";
+import {
+  FACEBOOK_APP_ID,
+  GOOGLE_ANDROID_CLIENT_ID,
+  GOOGLE_IOS_CLIENT_ID,
+} from "@env";
 import * as Facebook from "expo-facebook";
 import * as Google from "expo-google-app-auth";
 import { to } from "../utils/to";
@@ -7,7 +11,7 @@ import { firebase } from "../firebase";
 export async function getFacebookToken() {
   await Facebook.initializeAsync({
     appId: FACEBOOK_APP_ID,
-    appName: "regnite-todo",
+    appName: "axicon-raisehope",
   });
 
   const [error, data] = await to(
@@ -74,6 +78,6 @@ export async function signUpWithEmail(email: string, password: string) {
   );
 }
 
-export function signOut() {
-  firebase.auth().signOut();
+export async function signOut() {
+  await firebase.auth().signOut();
 }

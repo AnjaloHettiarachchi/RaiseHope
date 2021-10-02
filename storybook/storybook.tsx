@@ -1,9 +1,9 @@
 import React from "react";
 import { configure, getStorybookUI } from "@storybook/react-native";
 import ReactiveThemeProvider from "../app/components/reactive-theme-provider/reactive-theme-provider";
-import { darkTheme, lightTheme } from "../app/theme/themes";
+import { darkTheme, lightTheme } from "../app/config/themes";
 import { useFonts } from "expo-font";
-import fonts from "../app/theme/fonts";
+import fonts from "../app/config/fonts";
 
 declare let module: any;
 

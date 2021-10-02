@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { validateEmail, validatePassword } from "../utils/validate";
 import { debounce } from "debounce";
-import { timing } from "../theme";
+import { timing } from "../config";
 
 export function useCredentialsFields() {
   const [email, setEmail] = useState("");

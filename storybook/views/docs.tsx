@@ -1,6 +1,6 @@
 import styled from "@emotion/native";
 import * as React from "react";
-import { spacing, typography } from "../../app/theme";
+import { spacing, typography } from "../../app/config";
 import Markdown from "react-native-markdown-display";
 import { useTheme } from "@emotion/react";
 

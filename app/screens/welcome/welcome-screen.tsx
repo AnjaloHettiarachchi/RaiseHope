@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import Heading from "../../components/heading/heading";
 import Screen from "../../components/screen/screen";
 import Button from "../../components/button/button";
 import {
@@ -9,59 +8,69 @@ import {
   startSignInWithGoogle,
   updateError,
 } from "../../actions/auth/auth";
-import ErrorMessage from "../../components/error-message/error-message";
-import { spacing } from "../../theme";
-import { translate } from "../../i18n";
+import { spacing, typography } from "../../config";
 import styled from "@emotion/native";
-import { WelcomeProps } from "./welcome";
+import { WelcomeScreenProps } from "./welcome-screen.props";
+import { TextProps } from "react-native";
+
+const StyledScreen = styled(Screen)(props => ({
+  backgroundColor: props.theme.palette.primary,
+}));
 
 const Container = styled.View({
-  paddingHorizontal: spacing[5],
+  flex: 1,
+  paddingHorizontal: 30,
 });
 
-const WelcomeTitle = styled(Heading)({
-  paddingVertical: spacing[5],
+const TitleArea = styled.View({
+  flex: 1,
+  alignItems: "center",
+  justifyContent: "center",
 });
+
+const WelcomeTitle = styled.Text<TextProps>(props => ({
+  alignSelf: "center",
+  fontFamily: typography.primary.bold,
+  color: props.theme.palette.secondary,
+  fontSize: 50,
+}));
 
 const LoginButton = styled(Button)({
   marginVertical: spacing[3],
 });
 
-const Error = styled.View({
-  paddingVertical: spacing[5],
-  alignSelf: "center",
+const ButtonContainer = styled.View({
+  marginBottom: 20,
 });
 
-function WelcomeScreen(props: WelcomeProps) {
+const handleGetStartedBtnOnPress = (navigation: any) => {
+  navigation.navigate("SignUpWithEmail");
+};
+
+const handleSignInBtnOnPress = (navigation: any) => {
+  navigation.navigate("SignInWithEmail");
+};
+
+function WelcomeScreen(props: WelcomeScreenProps) {
   return (
-    <Screen>
+    <StyledScreen>
       <Container>
-        <WelcomeTitle>{translate("welcomeScreen.title")}</WelcomeTitle>
-        <LoginButton
-          onPress={() => {
-            props.clearError();
-            props.navigation.push("SignInWithEmail");
-          }}
-          kind="primary"
-        >
-          {translate("welcomeScreen.signInMethods.email")}
-        </LoginButton>
-        <LoginButton onPress={props.signInAnonymously} kind="secondary">
-          {translate("welcomeScreen.signInMethods.anonymous")}
-        </LoginButton>
-        <LoginButton onPress={props.signInWithGoogle} kind="secondary">
-          {translate("welcomeScreen.signInMethods.gmail")}
-        </LoginButton>
-        <LoginButton onPress={props.signInWithFacebook} kind="secondary">
-          {translate("welcomeScreen.signInMethods.facebook")}
-        </LoginButton>
-        {props.error && (
-          <Error>
-            <ErrorMessage>{props.error}</ErrorMessage>
-          </Error>
-        )}
+        <TitleArea>
+          <WelcomeTitle>RaiseHope</WelcomeTitle>
+        </TitleArea>
+        <ButtonContainer>
+          <LoginButton
+            onPress={() => handleGetStartedBtnOnPress(props.navigation)}>
+            Get Started
+          </LoginButton>
+          <Button
+            type="ghost"
+            onPress={() => handleSignInBtnOnPress(props.navigation)}>
+            Sign in
+          </Button>
+        </ButtonContainer>
       </Container>
-    </Screen>
+    </StyledScreen>
   );
 }
 

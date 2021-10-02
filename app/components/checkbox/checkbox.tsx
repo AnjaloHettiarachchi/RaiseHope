@@ -13,8 +13,7 @@ const Checkbox: React.FC<CheckboxProps> = props => {
         width={props.size}
         height={props.size}
         viewBox="0 0 27 27"
-        fill="none"
-      >
+        fill="none">
         <Circle
           cx="13.5"
           cy="13.5"

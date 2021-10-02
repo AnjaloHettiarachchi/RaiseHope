@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ErrorMessageProps } from "./error-message.props";
 import styled from "@emotion/native";
-import { spacing, typography } from "../../theme";
+import { spacing, typography } from "../../config";
 
 const Container = styled.View(() => ({
   flexDirection: "row",
@@ -11,7 +11,7 @@ const Container = styled.View(() => ({
 const Text = styled.Text(props => ({
   fontFamily: typography.primary.bold,
   fontSize: 15,
-  color: props.theme.error[100],
+  color: props.theme.error,
   fontWeight: "600",
   letterSpacing: 1.5,
 }));

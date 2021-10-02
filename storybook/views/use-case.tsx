@@ -1,7 +1,7 @@
 import styled from "@emotion/native";
 import * as React from "react";
 import { ViewStyle } from "react-native";
-import { spacing, typography } from "../../app/theme";
+import { spacing, typography } from "../../app/config";
 
 const Container = styled.View(props => ({
   backgroundColor: props.theme.background[100],

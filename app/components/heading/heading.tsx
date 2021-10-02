@@ -1,6 +1,6 @@
 import * as React from "react";
 import { HeadingProps } from "./Heading.props";
-import { spacing, typography } from "../../theme";
+import { spacing, typography } from "../../config";
 import styled from "@emotion/native";
 
 const Container = styled.View(() => ({
@@ -11,11 +11,11 @@ const Container = styled.View(() => ({
 interface TextProps {
   fontSize: number;
 }
+
 const Text = styled.Text<TextProps>(props => ({
   fontFamily: typography.primary.bold,
   fontSize: props.fontSize,
-  color: props.theme.text[100],
-  fontWeight: "bold",
+  color: props.theme.palette.white,
 }));
 
 const Heading: React.FC<HeadingProps> = ({ children, scale = 1, style }) => {

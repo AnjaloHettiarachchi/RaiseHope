@@ -1,6 +1,12 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react-native";
-import { Docs, PropsData, Story, StoryScreen, UseCase } from "../../../storybook/views";
+import {
+  Docs,
+  PropsData,
+  Story,
+  StoryScreen,
+  UseCase,
+} from "../../../storybook/views";
 import Input from "./input";
 
 declare let module: any;
@@ -35,15 +41,13 @@ storiesOf("Input", module)
 
       <UseCase
         title="Input with label"
-        description="Label can be optionally added to the input component"
-      >
+        description="Label can be optionally added to the input component">
         <Input label="Email" placeholder="Enter Email" />
       </UseCase>
 
       <UseCase
         title="Input with error"
-        description="If the error argument is set to true, the errorMessage argument will be displayed"
-      >
+        description="If the error argument is set to true, the errorMessage argument will be displayed">
         <Input
           label="Password"
           placeholder="Enter Password"

@@ -11,14 +11,14 @@ const Container = styled.View(props => ({
 }));
 
 const Screen: React.FC<ScreenProps> = props => {
-  const { style, showHeader = true } = props;
+  const { style, title, showHeader = true } = props;
   const navigation = useNavigation();
   const isFirstRoute = useIsFirstRoute();
 
   return (
     <Container style={style}>
       {!isFirstRoute && showHeader && (
-        <Header handleBackButtonClick={() => navigation.goBack()} />
+        <Header title={title} handleBackButtonClick={() => navigation.goBack()} />
       )}
       {props.children}
     </Container>

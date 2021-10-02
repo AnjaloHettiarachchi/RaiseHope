@@ -1,29 +1,27 @@
 import React from "react";
-import { NavigationContainer, NavigationContainerRef } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  NavigationContainerRef,
+} from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { MainNavigator } from "./main-navigator";
+import { AppNavigator } from "./app-navigator";
 import { AuthNavigator } from "./auth-navigator";
 import { connect } from "react-redux";
 
 export type RootParamList = {
-  mainStack: undefined;
-  authStack: undefined;
+  AppStack: undefined;
+  AuthStack: undefined;
 };
 
 const Stack = createStackNavigator<RootParamList>();
 
 const RootStack = (props: any) => {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        cardStyle: { backgroundColor: "transparent" },
-        headerShown: false,
-      }}
-    >
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       {props.isSignedIn ? (
-        <Stack.Screen name="mainStack" component={MainNavigator} />
+        <Stack.Screen name="AppStack" component={AppNavigator} />
       ) : (
-        <Stack.Screen name="authStack" component={AuthNavigator} />
+        <Stack.Screen name="AuthStack" component={AuthNavigator} />
       )}
     </Stack.Navigator>
   );

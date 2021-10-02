@@ -12,7 +12,7 @@ const LoadingButton: React.FC<LoadingButtonProps> = props => {
   if (isLoading)
     return (
       <View style={[CONTAINER, style]}>
-        <ActivityIndicator />
+        <ActivityIndicator color="#FFFFFF" />
       </View>
     );
 

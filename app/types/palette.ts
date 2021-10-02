@@ -1,10 +1,10 @@
-import { Green, Neutral, Primary, Red, Text, Yellow } from "./colors";
+import { Colors } from "./colors";
+import { ColorValue } from "react-native";
 
-export interface Palette {
-  primary: Primary;
-  text: Text;
-  neutral: Neutral;
-  red: Red;
-  yellow: Yellow;
-  green: Green;
-}
+export type Palette = {
+  [color in keyof Colors]: Colors[color];
+} & {
+  primary: ColorValue;
+  secondary: ColorValue;
+  accent: ColorValue;
+};
