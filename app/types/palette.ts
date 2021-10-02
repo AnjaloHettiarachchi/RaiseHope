@@ -1,9 +1,10 @@
 import { Colors } from "./colors";
+import { ColorValue } from "react-native";
 
 export type Palette = {
   [color in keyof Colors]: Colors[color];
 } & {
-  primary: string;
-  secondary: string;
-  accent: string;
+  primary: ColorValue;
+  secondary: ColorValue;
+  accent: ColorValue;
 };

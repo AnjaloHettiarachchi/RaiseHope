@@ -8,9 +8,9 @@ import {
   startSignInWithGoogle,
   updateError,
 } from "../../actions/auth/auth";
-import { spacing, typography } from "../../theme";
+import { spacing, typography } from "../../config";
 import styled from "@emotion/native";
-import { WelcomeProps } from "./welcome";
+import { WelcomeScreenProps } from "./welcome-screen.props";
 import { TextProps } from "react-native";
 
 const StyledScreen = styled(Screen)(props => ({
@@ -51,36 +51,8 @@ const handleSignInBtnOnPress = (navigation: any) => {
   navigation.navigate("SignInWithEmail");
 };
 
-function WelcomeScreen(props: WelcomeProps) {
+function WelcomeScreen(props: WelcomeScreenProps) {
   return (
-    // <Screen>
-    //   <Container>
-    //     <WelcomeTitle>{translate("welcomeScreen.title")}</WelcomeTitle>
-    //     <LoginButton
-    //       onPress={() => {
-    //         props.clearError();
-    //         props.navigation.push("SignInWithEmail");
-    //       }}
-    //       kind="primary"
-    //     >
-    //       {translate("welcomeScreen.signInMethods.email")}
-    //     </LoginButton>
-    //     <LoginButton onPress={props.signInAnonymously} kind="secondary">
-    //       {translate("welcomeScreen.signInMethods.anonymous")}
-    //     </LoginButton>
-    //     <LoginButton onPress={props.signInWithGoogle} kind="secondary">
-    //       {translate("welcomeScreen.signInMethods.gmail")}
-    //     </LoginButton>
-    //     <LoginButton onPress={props.signInWithFacebook} kind="secondary">
-    //       {translate("welcomeScreen.signInMethods.facebook")}
-    //     </LoginButton>
-    //     {props.error && (
-    //       <Error>
-    //         <ErrorMessage>{props.error}</ErrorMessage>
-    //       </Error>
-    //     )}
-    //   </Container>
-    // </Screen>
     <StyledScreen>
       <Container>
         <TitleArea>

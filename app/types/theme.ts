@@ -1,4 +1,5 @@
 import { Palette } from "./palette";
+import { ColorValue } from "react-native";
 
 export interface ThemeInterface {
   palette: Palette;
@@ -8,37 +9,29 @@ export interface ThemeInterface {
    * to the excessive compositing required
    * by their under-powered GPUs.
    */
-  transparent: string;
+  transparent: ColorValue;
   /**
-   * The screen background.
+   * The screen background color (with shades).
    */
   background: {
-    100: string;
-    200: string;
-    300: string;
+    100: ColorValue;
+    200: ColorValue;
+    300: ColorValue;
   };
   /**
    * The main tinting color.
    */
-  primary: string;
+  primary: ColorValue;
   /**
-   * The default color of text in many components.
+   * The default color for various texts.
    */
   text: {
-    100: string;
-    200: string;
-    300: string;
+    100: ColorValue;
+    200: ColorValue;
+    300: ColorValue;
   };
   /**
    * Error messages and icons.
    */
-  error: string;
-  /**
-   * Colors for categories
-   */
-  category: {
-    work: string;
-    personal: string;
-    all: string;
-  };
+  error: ColorValue;
 }

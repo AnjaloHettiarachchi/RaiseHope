@@ -1,10 +1,9 @@
-import { applyMiddleware, compose, createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import { persistReducer, persistStore } from "redux-persist";
+import { composeWithDevTools } from "redux-devtools-extension";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import rootReducer from "./rootReducer";
 import middlewares from "./middlewares";
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const persistConfig = {
   key: "root",
@@ -16,7 +15,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 export default () => {
   const store = createStore(
     persistedReducer,
-    composeEnhancers(applyMiddleware(...middlewares)),
+    composeWithDevTools(applyMiddleware(...middlewares)),
   );
   const persistor = persistStore(store);
 

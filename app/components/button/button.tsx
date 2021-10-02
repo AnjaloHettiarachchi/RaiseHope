@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ButtonProps } from "./button.props";
 import styled from "@emotion/native";
-import { spacing, typography } from "../../theme";
+import { spacing, typography } from "../../config";
 
 interface ContainerProps {
   disabled: boolean;
@@ -35,7 +35,7 @@ interface TextProps {
 
 const Text = styled.Text<TextProps>(props => ({
   color:
-    props.type === "ghost" ? props.theme.palette.white : props.theme.primary,
+    props.type === "ghost" ? props.theme.palette.white : props.theme.background[100],
   fontFamily: typography.primary.medium,
   textAlign: "center",
   fontSize: props.fontSize,

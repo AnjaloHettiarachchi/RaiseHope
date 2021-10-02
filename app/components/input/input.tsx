@@ -1,7 +1,7 @@
 import * as React from "react";
 import { InputProps } from "./input.props";
 import styled from "@emotion/native";
-import { spacing, typography } from "../../theme";
+import { spacing, typography } from "../../config";
 import Heading from "../heading/heading";
 import ErrorMessage from "../error-message/error-message";
 import { useTheme } from "@emotion/react";
@@ -23,7 +23,7 @@ const TextInput = styled.TextInput<TextInputProps>(props => ({
   borderColor: props.error ? props.theme.error : props.theme.palette.white,
   borderWidth: 2,
   fontSize: spacing[4],
-  color: props.theme.text[300],
+  color: props.theme.palette.blueGrey[700],
   fontFamily: typography.primary.regular,
   borderRadius: 5,
 }));

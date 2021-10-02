@@ -9,4 +9,8 @@ export interface HeaderProps {
    * Container style overrides
    */
   style?: ViewStyle;
+  /**
+   * Header title
+   */
+  title: string;
 }

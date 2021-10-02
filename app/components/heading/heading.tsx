@@ -1,6 +1,6 @@
 import * as React from "react";
 import { HeadingProps } from "./Heading.props";
-import { spacing, typography } from "../../theme";
+import { spacing, typography } from "../../config";
 import styled from "@emotion/native";
 
 const Container = styled.View(() => ({

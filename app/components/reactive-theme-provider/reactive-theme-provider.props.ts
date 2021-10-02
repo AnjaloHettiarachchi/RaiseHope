@@ -8,11 +8,11 @@ export interface ReactiveThemeProviderProps {
    */
   children: ReactNode;
   /**
-   * The light theme interface
+   * The light config interface
    */
   lightTheme: ThemeInterface;
   /**
-   * The dark theme interface
+   * The dark config interface
    */
   darkTheme: ThemeInterface;
   /**

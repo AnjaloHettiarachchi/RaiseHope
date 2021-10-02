@@ -11,7 +11,7 @@ import { firebase } from "../firebase";
 export async function getFacebookToken() {
   await Facebook.initializeAsync({
     appId: FACEBOOK_APP_ID,
-    appName: "regnite-todo",
+    appName: "axicon-raisehope",
   });
 
   const [error, data] = await to(
@@ -78,6 +78,6 @@ export async function signUpWithEmail(email: string, password: string) {
   );
 }
 
-export function signOut() {
-  firebase.auth().signOut();
+export async function signOut() {
+  await firebase.auth().signOut();
 }

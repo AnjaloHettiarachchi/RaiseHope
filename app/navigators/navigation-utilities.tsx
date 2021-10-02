@@ -21,8 +21,12 @@ export const setRootNavigation = (
   ref: React.RefObject<NavigationContainerRef>,
 ) => {
   for (const method in RootNavigation) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     RootNavigation[method] = (...args: any) => {
       if (ref.current) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         return ref.current[method](...args);
       }
     };
@@ -34,7 +38,7 @@ export const setRootNavigation = (
  */
 export function getActiveRouteName(
   state: NavigationState | PartialState<NavigationState>,
-) {
+): any {
   const route = state.routes[state.index];
 
   // Found the active route -- return the name
@@ -114,7 +118,7 @@ export function useNavigationPersistence(storage: any, persistenceKey: string) {
       // __DEV__ && console.tron.log(currentRouteName)
     }
 
-    // Save the current route name for later comparision
+    // Save the current route name for later comparison
     routeNameRef.current = currentRouteName;
 
     // Persist state to storage

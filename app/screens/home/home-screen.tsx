@@ -1,15 +1,13 @@
 import React from "react";
-import TodoList from "../../components/todo-list/todo-list";
 import Heading from "../../components/heading/heading";
-import NewTodoForm from "../../components/new-todo-form/new-todo-form";
-import FiltersForm from "../../components/filters-form/filters-form";
 import Screen from "../../components/screen/screen";
 import { startSignOut } from "../../actions/auth/auth";
 import { connect } from "react-redux";
-import { spacing } from "../../theme";
+import { spacing } from "../../config";
 import styled from "@emotion/native";
 import Button from "../../components/button/button";
-import { HomeProps } from "./home.props";
+import { HomeScreenProps } from "./home-screen.props";
+import { doClearProfile } from "../../actions/profile/profile";
 
 const Container = styled.View(() => ({
   flex: 1,
@@ -25,33 +23,31 @@ const LogoutButton = styled(Button)(() => ({
   marginVertical: spacing[3],
 }));
 
-function HomeScreen(props: HomeProps) {
+function HomeScreen(props: HomeScreenProps) {
   return (
     <Screen>
       <Container>
-        <LogoutButton kind="secondary" onPress={() => props.signOut()}>
+        <LogoutButton type="default" onPress={() => props.signOut()}>
           Log Out
         </LogoutButton>
-        <WelcomeTitle>{`Welcome, ${props.name}!`}</WelcomeTitle>
-        <FiltersForm />
-        <NewTodoForm />
-        <TodoList />
+        <WelcomeTitle>{`Welcome, ${props.userFirstName}!`}</WelcomeTitle>
       </Container>
     </Screen>
   );
 }
 
 const mapDispatchToProps = (dispatch: any) => ({
-  signOut: () => dispatch(startSignOut()),
+  signOut: () => {
+    dispatch(startSignOut());
+    dispatch(doClearProfile());
+  },
 });
 
 const mapStateToProps = (state: any) => {
-  if (!state.auth.user) return {};
+  if (!state.profile) return {};
 
   return {
-    name: state.auth.user.email
-      ? state.auth.user.email.split("@")[0]
-      : "anonymous user",
+    userFirstName: state.profile.firstName,
   };
 };
 
