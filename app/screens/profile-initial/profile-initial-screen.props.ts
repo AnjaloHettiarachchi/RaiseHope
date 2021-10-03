@@ -1,4 +1,4 @@
-import { ProfileData } from "../../actions/profile/types";
+import { Profile } from "../../types";
 
 export interface ProfileInitialScreenProps {
   /**
@@ -6,5 +6,5 @@ export interface ProfileInitialScreenProps {
    * @param profile object to be saved
    * @return void
    */
-  addProfile: (profile: ProfileData) => void;
+  addProfile: (profile: Profile) => void;
 }

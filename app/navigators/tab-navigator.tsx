@@ -1,9 +1,11 @@
 import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import { HomeScreen } from "../screens";
+import { HomeScreen, ProfileScreen } from "../screens";
+import { useTheme } from "@emotion/react";
 
 type PrimaryParamList = {
   Home: undefined;
+  Search: undefined;
   Notifications: undefined;
   Profile: undefined;
 };
@@ -11,11 +13,23 @@ type PrimaryParamList = {
 const Tab = createMaterialBottomTabNavigator<PrimaryParamList>();
 
 const TabNavigator: React.FC = () => {
+  const theme = useTheme();
+
   return (
-    <Tab.Navigator initialRouteName="Home">
+    <Tab.Navigator
+      screenOptions={{ tabBarColor: theme.primary as string }}
+      initialRouteName="Home">
       <Tab.Screen
         name="Home"
-        options={{ tabBarIcon: "home", tabBarLabel: "Home" }}
+        options={{ tabBarIcon: "heart", tabBarLabel: "Hopes" }}
+        component={HomeScreen}
+      />
+      <Tab.Screen
+        name="Search"
+        options={{
+          tabBarIcon: "magnify",
+          tabBarLabel: "Search",
+        }}
         component={HomeScreen}
       />
       <Tab.Screen
@@ -23,6 +37,7 @@ const TabNavigator: React.FC = () => {
         options={{
           tabBarIcon: "bell",
           tabBarLabel: "Notifications",
+          tabBarBadge: 5,
         }}
         component={HomeScreen}
       />
@@ -32,7 +47,7 @@ const TabNavigator: React.FC = () => {
           tabBarIcon: "account-circle",
           tabBarLabel: "Profile",
         }}
-        component={HomeScreen}
+        component={ProfileScreen}
       />
     </Tab.Navigator>
   );

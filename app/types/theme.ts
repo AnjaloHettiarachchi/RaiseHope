@@ -19,9 +19,11 @@ export interface ThemeInterface {
     300: ColorValue;
   };
   /**
-   * The main tinting color.
+   * The main tinting colors.
    */
   primary: ColorValue;
+  secondary: ColorValue;
+  accent: ColorValue;
   /**
    * The default color for various texts.
    */
@@ -34,4 +36,27 @@ export interface ThemeInterface {
    * Error messages and icons.
    */
   error: ColorValue;
+  /**
+   * Color scheme for `Button` component.
+   */
+  button: {
+    background: {
+      primary: ColorValue;
+      secondary: ColorValue;
+      accent: ColorValue;
+      success: ColorValue;
+      danger: ColorValue;
+      warning: ColorValue;
+      info: ColorValue;
+    };
+    text: {
+      primary: ColorValue;
+      secondary: ColorValue;
+      accent: ColorValue;
+      success: ColorValue;
+      danger: ColorValue;
+      warning: ColorValue;
+      info: ColorValue;
+    };
+  };
 }

@@ -114,7 +114,7 @@ const ProfileInitialScreen: React.FC<ProfileInitialScreenProps> = props => {
           label="I am more passionate about..."
           onValueChange={v => passion.update(v as string)}>
           <RNPicker.Item label="Arts" value="arts" />
-          <RNPicker.Item label="Fundraisers" value="charity" />
+          <RNPicker.Item label="Fundraisers" value="fundraises" />
           <RNPicker.Item label="Design & Tech" value="design_tech" />
           <RNPicker.Item label="Music" value="music" />
           <RNPicker.Item label="Other" value="other" />

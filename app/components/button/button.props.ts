@@ -2,15 +2,26 @@ import { TouchableOpacityProps, ViewStyle } from "react-native";
 
 export interface ButtonProps extends TouchableOpacityProps {
   /**
-   * kinds of button, defaults to "primary"
+   * Modes of button. (default: `default`)
    */
-  type?: "default" | "ghost" | "outline";
+  mode?: "default" | "faded" | "ghost";
   /**
-   * the button text font size, defaults to 16s
+   * Types of button.
+   */
+  type?:
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "success"
+    | "danger"
+    | "warning"
+    | "info";
+  /**
+   * The button text font size. (default: `16px`)
    */
   fontSize?: number;
   /**
-   * Container style overrides
+   * Container style overrides.
    */
   style?: ViewStyle;
 }

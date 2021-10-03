@@ -14,7 +14,7 @@ import { WelcomeScreenProps } from "./welcome-screen.props";
 import { TextProps } from "react-native";
 
 const StyledScreen = styled(Screen)(props => ({
-  backgroundColor: props.theme.palette.primary,
+  backgroundColor: props.theme.primary,
 }));
 
 const Container = styled.View({
@@ -31,7 +31,7 @@ const TitleArea = styled.View({
 const WelcomeTitle = styled.Text<TextProps>(props => ({
   alignSelf: "center",
   fontFamily: typography.primary.bold,
-  color: props.theme.palette.secondary,
+  color: props.theme.secondary,
   fontSize: 50,
 }));
 
@@ -60,11 +60,12 @@ function WelcomeScreen(props: WelcomeScreenProps) {
         </TitleArea>
         <ButtonContainer>
           <LoginButton
+            type="secondary"
             onPress={() => handleGetStartedBtnOnPress(props.navigation)}>
             Get Started
           </LoginButton>
           <Button
-            type="ghost"
+            mode="ghost"
             onPress={() => handleSignInBtnOnPress(props.navigation)}>
             Sign in
           </Button>
