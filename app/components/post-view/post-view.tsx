@@ -18,10 +18,10 @@ import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const CardView = styled.View(props => ({
   display: "flex",
-  // justifyContent: "space-between",
   backgroundColor: props.theme.palette.white,
   borderRadius: 10,
   minHeight: 400,
+  marginVertical: spacing[1],
 }));
 
 const CoverImage = styled.ImageBackground({
@@ -52,7 +52,7 @@ const CardFooter = styled.View(props => ({
   justifyContent: "space-between",
   padding: spacing[3],
   borderTopWidth: 1,
-  borderTopColor: props.theme.palette.blueGrey[100]
+  borderTopColor: props.theme.palette.blueGrey[100],
 }));
 
 const FundingProgressView = (props: {
@@ -84,7 +84,7 @@ const FundingProgressView = (props: {
         <CurrencyText>{currencyFormat(props.goalAmount)}</CurrencyText> goal
       </StyledText>
       <StyledProgressBar
-        color={theme.primary as string}
+        color={theme.palette.amber[700] as string}
         progress={props.currentAmount / props.goalAmount}
       />
     </View>
@@ -131,19 +131,16 @@ const PostView: React.FC<PostViewProps> = ({
   shares,
 }) => {
   const theme = useTheme();
+
   const [isCoverImageLoading, setIsCoverImageLoading] = useState<boolean>(
     undefined,
   );
-
   return (
     <Pressable onPress={() => Alert.alert(`postId: ${id}`)}>
       <CardView>
         <CoverImage
-          source={{
-            uri:
-              "https://firebasestorage.googleapis.com/v0/b/axicon-raisehope.appspot.com/o/post-cover-images%2FqOQwROOjcvxn70gvhMw6.jpg?alt=media&token=1c34b4ad-d0bf-4a15-a235-ffa701b9c06b",
-          }}
-          resizeMode={"cover"}
+          source={{ uri: coverImage }}
+          resizeMode="cover"
           onLoadStart={() => setIsCoverImageLoading(true)}
           onLoadEnd={() => setIsCoverImageLoading(false)}
           imageStyle={styles.coverImage}>
@@ -166,12 +163,12 @@ const PostView: React.FC<PostViewProps> = ({
         </CardBody>
         <CardFooter>
           <IconWithCount
-            icon={"heart-outline"}
-            color={theme.palette.red[500]}
+            icon="heart-outline"
+            color={theme.palette.amber[700]}
             count={likes}
           />
-          <IconWithCount icon={"chat"} count={52} />
-          <IconWithCount icon={"share"} count={shares} />
+          <IconWithCount icon="chat-outline" count={0} />
+          <IconWithCount icon="share-outline" count={shares} />
         </CardFooter>
       </CardView>
     </Pressable>

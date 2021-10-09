@@ -4,6 +4,7 @@ import SignInWithEmailScreen from "./sign-in/sign-in-screen";
 import SignUpWithEmailScreen from "./sign-up/sign-up-screen";
 import ProfileInitialScreen from "./profile-initial/profile-initial-screen";
 import ProfileScreen from "./profile/profile-screen";
+import CreatePostScreen from "./create-post/create-post-screen";
 
 export {
   HomeScreen,
@@ -12,4 +13,5 @@ export {
   SignUpWithEmailScreen,
   ProfileInitialScreen,
   ProfileScreen,
+  CreatePostScreen,
 };

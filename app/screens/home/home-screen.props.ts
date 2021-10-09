@@ -8,7 +8,7 @@ export interface HomeScreenProps {
   /**
    * A callback to sign out from the app
    */
-  fetchPosts: () => void;
+  fetchPosts: () => Promise<void>;
   /**
    * react-navigation navigation prop
    */

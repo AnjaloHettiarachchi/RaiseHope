@@ -1,4 +1,4 @@
-import { ViewStyle } from "react-native";
+import { ColorValue, ViewStyle } from "react-native";
 
 export interface ScreenProps {
   /**
@@ -13,4 +13,8 @@ export interface ScreenProps {
    * Screen title for Header
    */
   title?: string;
+  /**
+   * Status bar color.
+   */
+  statusBarColor?: ColorValue | string;
 }

@@ -1,5 +1,7 @@
 import { firestore } from "../firebase";
 import { Post, Profile } from "../types";
+import { CreatePost } from "../types/entities/post";
+import { uploadImage } from "../utils/common";
 
 export async function getAll() {
   const posts: Array<Post> = [];
@@ -15,4 +17,9 @@ export async function getAll() {
     posts.push(post);
   }
   return posts;
+}
+
+export async function create(post: CreatePost) {
+  post.coverImage = await uploadImage(post.coverImage);
+  return await firestore.collection("posts").doc().set(post);
 }

@@ -71,6 +71,8 @@ const Button: React.FC<ButtonProps> = ({
   type = "primary",
   fontSize = 16,
   children,
+  backgroundColor,
+  textColor,
   ...buttonProps
 }) => {
   return (
@@ -78,9 +80,10 @@ const Button: React.FC<ButtonProps> = ({
       <ButtonWrapper
         mode={mode}
         type={type}
+        style={{ backgroundColor: backgroundColor }}
         disabled={disabled}
         {...buttonProps}>
-        <InnerText type={type} fontSize={fontSize}>
+        <InnerText type={type} fontSize={fontSize} style={{ color: textColor }}>
           {children}
         </InnerText>
       </ButtonWrapper>

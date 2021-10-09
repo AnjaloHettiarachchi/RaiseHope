@@ -1,4 +1,4 @@
-import { TouchableOpacityProps, ViewStyle } from "react-native";
+import { ColorValue, TouchableOpacityProps, ViewStyle } from "react-native";
 
 export interface ButtonProps extends TouchableOpacityProps {
   /**
@@ -24,4 +24,12 @@ export interface ButtonProps extends TouchableOpacityProps {
    * Container style overrides.
    */
   style?: ViewStyle;
+  /**
+   * Custom background color for the button.
+   */
+  backgroundColor?: ColorValue | string;
+  /**
+   * Custom text color for the button.
+   */
+  textColor?: ColorValue | string;
 }

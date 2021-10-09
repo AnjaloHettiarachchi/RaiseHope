@@ -1,11 +1,12 @@
 import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import { HomeScreen, ProfileScreen } from "../screens";
+import { CreatePostScreen, HomeScreen, ProfileScreen } from "../screens";
 import { useTheme } from "@emotion/react";
 
 type PrimaryParamList = {
   Home: undefined;
   Search: undefined;
+  Create: undefined;
   Notifications: undefined;
   Profile: undefined;
 };
@@ -31,6 +32,15 @@ const TabNavigator: React.FC = () => {
           tabBarLabel: "Search",
         }}
         component={HomeScreen}
+      />
+      <Tab.Screen
+        name="Create"
+        options={{
+          tabBarColor: theme.palette.amber[700].toString(),
+          tabBarIcon: "heart-plus",
+          tabBarLabel: "Create Hope",
+        }}
+        component={CreatePostScreen}
       />
       <Tab.Screen
         name="Notifications"
