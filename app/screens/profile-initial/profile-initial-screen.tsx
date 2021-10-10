@@ -12,6 +12,7 @@ import { doAddProfile } from "../../actions/profile/profile";
 import { ProfileInitialScreenProps } from "./profile-initial-screen.props";
 import { useProfileInitialFields } from "../../hooks";
 import { Profile } from "../../types";
+import { useTheme } from "@emotion/react";
 
 const StyledScreen = styled(Screen)({
   padding: spacing[3],
@@ -120,7 +121,11 @@ const ProfileInitialScreen: React.FC<ProfileInitialScreenProps> = props => {
           <RNPicker.Item label="Other" value="other" />
         </StyledPicker>
 
-        <StyledButton onPress={handleSaveProfileInitial}>Save</StyledButton>
+        <StyledButton
+          textColor={useTheme().palette.white}
+          onPress={handleSaveProfileInitial}>
+          Save
+        </StyledButton>
       </Container>
     </StyledScreen>
   );

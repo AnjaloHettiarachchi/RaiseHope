@@ -41,7 +41,7 @@ const LoginButton = styled(Button)({
 });
 
 const ButtonContainer = styled.View({
-  marginBottom: 20,
+  marginBottom: 60,
 });
 
 const handleGetStartedBtnOnPress = (navigation: any) => {
