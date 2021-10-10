@@ -12,7 +12,7 @@ export const profileReducerDefaultState: Readonly<Profile> = {
 export const profileReducer = (
   state = profileReducerDefaultState,
   action: Action,
-) => {
+): Profile => {
   switch (action.type) {
     case "SET_PROFILE":
       return { ...action.payload };

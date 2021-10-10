@@ -1,10 +1,5 @@
 import "./utils/ignore-warnings";
 import React from "react";
-import {
-  initialWindowMetrics,
-  SafeAreaProvider,
-  SafeAreaView,
-} from "react-native-safe-area-context";
 import { useFonts } from "expo-font";
 import { RootNavigator } from "./navigators";
 import { Provider } from "react-redux";
@@ -13,14 +8,8 @@ import configureStore from "./store/configureStore";
 import fonts from "./config/fonts";
 import ReactiveThemeProvider from "../app/components/reactive-theme-provider/reactive-theme-provider";
 import { darkTheme, lightTheme } from "./config/themes";
-import styled from "@emotion/native";
 
 const { store, persistor } = configureStore();
-
-const StyledSafeAreaView = styled(SafeAreaView)(props => ({
-  flex: 1,
-  backgroundColor: props.theme.background[100]
-}));
 
 function App() {
   const [loaded] = useFonts(fonts);
@@ -31,11 +20,7 @@ function App() {
     <ReactiveThemeProvider lightTheme={lightTheme} darkTheme={darkTheme}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-            <StyledSafeAreaView edges={["top"]}>
-              <RootNavigator />
-            </StyledSafeAreaView>
-          </SafeAreaProvider>
+          <RootNavigator />
         </PersistGate>
       </Provider>
     </ReactiveThemeProvider>

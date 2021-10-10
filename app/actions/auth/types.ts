@@ -1,4 +1,4 @@
-import { Error, Status, User } from "../../types/auth";
+import { Error, Status, User } from "../../types/entities/auth";
 
 export interface Action {
   type:

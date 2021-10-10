@@ -2,6 +2,22 @@ import * as React from "react";
 import { ButtonProps } from "./button.props";
 import styled from "@emotion/native";
 import { spacing, typography } from "../../config";
+import { useTheme } from "@emotion/react";
+
+function getColorByType(
+  colorFor: "background" | "text",
+  type:
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "success"
+    | "danger"
+    | "warning"
+    | "info",
+) {
+  const theme = useTheme();
+  return theme.button[colorFor][type];
+}
 
 interface ContainerProps {
   disabled: boolean;
@@ -12,44 +28,65 @@ const Container = styled.View<ContainerProps>(props => ({
 }));
 
 interface TouchableOpacityProps {
-  type: "default" | "ghost" | "outline";
+  mode: "default" | "faded" | "ghost";
+  type:
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "success"
+    | "danger"
+    | "warning"
+    | "info";
 }
 
-const TouchableOpacity = styled.TouchableOpacity<TouchableOpacityProps>(
-  props => ({
-    backgroundColor:
-      props.type === "ghost"
-        ? props.theme.transparent
-        : props.theme.palette.white,
-    borderColor: props.theme.palette.white,
-    borderWidth: props.type === "ghost" ? 0 : 3,
-    padding: spacing[3],
-    borderRadius: 5,
-  }),
-);
+const ButtonWrapper = styled.TouchableOpacity<TouchableOpacityProps>(props => ({
+  backgroundColor: getColorByType("background", props.type),
+  borderColor: props.theme.palette.white,
+  padding: spacing[3],
+  borderRadius: 5,
+}));
 
 interface TextProps {
-  type: "default" | "ghost" | "outline";
+  type:
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "success"
+    | "danger"
+    | "warning"
+    | "info";
   fontSize: number;
 }
 
-const Text = styled.Text<TextProps>(props => ({
-  color:
-    props.type === "ghost" ? props.theme.palette.white : props.theme.background[100],
+const InnerText = styled.Text<TextProps>(props => ({
+  color: getColorByType("text", props.type),
   fontFamily: typography.primary.medium,
   textAlign: "center",
   fontSize: props.fontSize,
 }));
 
-const Button: React.FC<ButtonProps> = props => {
-  const { disabled, type = "default", fontSize = 16, ...buttonProps } = props;
+const Button: React.FC<ButtonProps> = ({
+  disabled,
+  mode = "default",
+  type = "primary",
+  fontSize = 16,
+  children,
+  backgroundColor,
+  textColor,
+  ...buttonProps
+}) => {
   return (
     <Container disabled={disabled}>
-      <TouchableOpacity type={type} {...buttonProps} disabled={disabled}>
-        <Text fontSize={fontSize} type={type}>
-          {props.children}
-        </Text>
-      </TouchableOpacity>
+      <ButtonWrapper
+        mode={mode}
+        type={type}
+        style={{ backgroundColor: backgroundColor }}
+        disabled={disabled}
+        {...buttonProps}>
+        <InnerText type={type} fontSize={fontSize} style={{ color: textColor }}>
+          {children}
+        </InnerText>
+      </ButtonWrapper>
     </Container>
   );
 };

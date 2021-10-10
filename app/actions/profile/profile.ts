@@ -1,6 +1,6 @@
 import { Profile } from "../../types";
 import { Action } from "./types";
-import { profileApi } from "../../services";
+import * as profileApi from "../../services/profile-api";
 import { profileReducerDefaultState } from "../../reducers";
 
 const setProfile = (profile: Profile): Action => ({

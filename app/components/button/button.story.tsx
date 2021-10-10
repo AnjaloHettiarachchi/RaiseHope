@@ -30,26 +30,26 @@ storiesOf("Button", module)
   .add("Behaviour", () => (
     <Story>
       <UseCase title="Primary title">
-        <Button kind="primary">Primary</Button>
+        <Button type="primary">Primary</Button>
       </UseCase>
       <UseCase title="Secondary title">
-        <Button kind="secondary">Secondary</Button>
+        <Button type="secondary">Secondary</Button>
       </UseCase>
-      <UseCase title="Tertiary title">
-        <Button kind="tertiary">Tertiary</Button>
+      <UseCase title="Accent title">
+        <Button type="accent">Accent</Button>
       </UseCase>
       <UseCase title="Disabled primary button">
-        <Button disabled kind="primary">
+        <Button disabled type="primary">
           I am disabled
         </Button>
       </UseCase>
       <UseCase title="Disabled secondary button">
-        <Button disabled kind="secondary">
+        <Button disabled type="secondary">
           I am also disabled
         </Button>
       </UseCase>
-      <UseCase title="Disabled tertiary button">
-        <Button disabled kind="tertiary">
+      <UseCase title="Disabled accent button">
+        <Button disabled type="accent">
           I am also disabled
         </Button>
       </UseCase>

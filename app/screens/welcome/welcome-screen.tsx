@@ -12,9 +12,10 @@ import { spacing, typography } from "../../config";
 import styled from "@emotion/native";
 import { WelcomeScreenProps } from "./welcome-screen.props";
 import { TextProps } from "react-native";
+import { useTheme } from "@emotion/react";
 
 const StyledScreen = styled(Screen)(props => ({
-  backgroundColor: props.theme.palette.primary,
+  backgroundColor: props.theme.primary,
 }));
 
 const Container = styled.View({
@@ -31,7 +32,7 @@ const TitleArea = styled.View({
 const WelcomeTitle = styled.Text<TextProps>(props => ({
   alignSelf: "center",
   fontFamily: typography.primary.bold,
-  color: props.theme.palette.secondary,
+  color: props.theme.secondary,
   fontSize: 50,
 }));
 
@@ -40,7 +41,7 @@ const LoginButton = styled(Button)({
 });
 
 const ButtonContainer = styled.View({
-  marginBottom: 20,
+  marginBottom: 60,
 });
 
 const handleGetStartedBtnOnPress = (navigation: any) => {
@@ -52,19 +53,23 @@ const handleSignInBtnOnPress = (navigation: any) => {
 };
 
 function WelcomeScreen(props: WelcomeScreenProps) {
+  const theme = useTheme();
+
   return (
-    <StyledScreen>
+    <StyledScreen statusBarColor={theme.primary}>
       <Container>
         <TitleArea>
           <WelcomeTitle>RaiseHope</WelcomeTitle>
         </TitleArea>
         <ButtonContainer>
           <LoginButton
+            type="secondary"
             onPress={() => handleGetStartedBtnOnPress(props.navigation)}>
             Get Started
           </LoginButton>
           <Button
-            type="ghost"
+            mode="ghost"
+            textColor={theme.palette.white}
             onPress={() => handleSignInBtnOnPress(props.navigation)}>
             Sign in
           </Button>

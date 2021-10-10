@@ -1,6 +1,6 @@
 import { to } from "../../utils/to";
-import { Error, Status } from "../../types/auth";
-import { authApi } from "../../services";
+import { Error, Status } from "../../types/entities/auth";
+import * as authApi from "../../services/auth-api";
 
 import { firebase } from "../../firebase/firebase";
 import { doLoadProfile } from "../profile/profile";

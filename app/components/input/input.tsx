@@ -18,7 +18,7 @@ interface TextInputProps {
 
 const TextInput = styled.TextInput<TextInputProps>(props => ({
   flexDirection: "row",
-  padding: spacing[4],
+  padding: spacing[3],
   backgroundColor: props.theme.palette.white,
   borderColor: props.error ? props.theme.error : props.theme.palette.white,
   borderWidth: 2,

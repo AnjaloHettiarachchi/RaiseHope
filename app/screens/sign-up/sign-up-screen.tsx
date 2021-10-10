@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { spacing } from "../../config";
 import styled from "@emotion/native";
 import { SignUpWithEmailProps } from "./sign-up-screen.props";
+import { useTheme } from "@emotion/react";
 
 const Container = styled.View({
   paddingHorizontal: spacing[5],
@@ -22,7 +23,8 @@ const SignUpButton = styled(LoadingButton)({
 });
 
 function SignUpScreen(props: SignUpWithEmailProps) {
-  const {email, password} = useCredentialsFields();
+  const { email, password } = useCredentialsFields();
+  const theme = useTheme();
 
   return (
     <Screen title="Create Account">
@@ -37,9 +39,7 @@ function SignUpScreen(props: SignUpWithEmailProps) {
           textContentType="emailAddress"
           autoCapitalize="none"
           returnKeyType="next"
-          error={
-            !!email.value && !email.isValid
-          }
+          error={!!email.value && !email.isValid}
           errorMessage="Invalid Email Address"
         />
         <SignUpInput
@@ -50,21 +50,14 @@ function SignUpScreen(props: SignUpWithEmailProps) {
           autoCompleteType="password"
           textContentType="password"
           secureTextEntry
-          error={
-            !!password.value &&
-            !password.isValid
-          }
+          error={!!password.value && !password.isValid}
           errorMessage="Invalid Password"
         />
         <SignUpButton
+          backgroundColor={theme.palette.white}
           isLoading={props.isLoading}
           error={props.error}
-          onPress={() =>
-            props.signUp(
-              email.value,
-              password.value,
-            )
-          }
+          onPress={() => props.signUp(email.value, password.value)}
           disabled={
             !email.value ||
             !password.value ||
@@ -88,7 +81,4 @@ const mapStateToProps = (state: any) => ({
   error: state.auth.error,
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SignUpScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpScreen);

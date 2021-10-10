@@ -20,4 +20,5 @@ export interface Colors {
   blue: ColorWithShades;
   blueGrey: ColorWithShades;
   red: ColorWithShades;
+  amber: ColorWithShades;
 }

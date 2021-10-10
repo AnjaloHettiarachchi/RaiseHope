@@ -1,12 +1,14 @@
+import { Post } from "../../types";
+
 export interface HomeScreenProps {
   /**
-   * The user name
+   * List of Posts to display as a feed.
    */
-  userFirstName: string;
+  posts: Array<Post>;
   /**
    * A callback to sign out from the app
    */
-  signOut: () => void;
+  fetchPosts: () => Promise<void>;
   /**
    * react-navigation navigation prop
    */
