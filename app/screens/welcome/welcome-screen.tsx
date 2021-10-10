@@ -12,6 +12,7 @@ import { spacing, typography } from "../../config";
 import styled from "@emotion/native";
 import { WelcomeScreenProps } from "./welcome-screen.props";
 import { TextProps } from "react-native";
+import { useTheme } from "@emotion/react";
 
 const StyledScreen = styled(Screen)(props => ({
   backgroundColor: props.theme.primary,
@@ -52,8 +53,10 @@ const handleSignInBtnOnPress = (navigation: any) => {
 };
 
 function WelcomeScreen(props: WelcomeScreenProps) {
+  const theme = useTheme();
+
   return (
-    <StyledScreen>
+    <StyledScreen statusBarColor={theme.primary}>
       <Container>
         <TitleArea>
           <WelcomeTitle>RaiseHope</WelcomeTitle>
@@ -66,6 +69,7 @@ function WelcomeScreen(props: WelcomeScreenProps) {
           </LoginButton>
           <Button
             mode="ghost"
+            textColor={theme.palette.white}
             onPress={() => handleSignInBtnOnPress(props.navigation)}>
             Sign in
           </Button>

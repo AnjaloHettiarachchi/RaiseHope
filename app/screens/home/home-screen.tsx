@@ -10,18 +10,33 @@ import { FlatList, StyleSheet, TouchableOpacity } from "react-native";
 import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import { doFetchPosts } from "../../actions/posts/posts";
 import PostView from "../../components/post-view/post-view";
+import { useNetInfo } from "@react-native-community/netinfo";
 
-const Container = styled.View(() => ({
+const Container = styled.View({
   flex: 1,
-}));
+});
 
-const HomeHeader = styled.View(() => ({
+const HomeHeader = styled.View({
+  marginBottom: spacing[3],
+  paddingHorizontal: spacing[3],
+});
+
+const HeaderContent = styled.View({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "space-between",
-  marginBottom: spacing[3],
-  paddingHorizontal: spacing[3],
+  marginBottom: spacing[1],
+});
+
+const LostConnectionBanner = styled.View(props => ({
+  display: "flex",
+  alignItems: "center",
+  backgroundColor: props.theme.palette.amber[500],
+}));
+
+const LostConnectionBannerText = styled.Text(props => ({
+  color: props.theme.palette.blueGrey[900],
 }));
 
 const styles = StyleSheet.create({
@@ -32,34 +47,45 @@ const styles = StyleSheet.create({
 
 function HomeScreen(props: HomeScreenProps) {
   const theme = useTheme();
+  const { isConnected } = useNetInfo();
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
 
   async function refreshPosts() {
     setIsRefreshing(true);
     try {
-      await props.fetchPosts();
+      isConnected && (await props.fetchPosts());
     } finally {
       setIsRefreshing(false);
     }
   }
 
   useEffect(() => {
-    (async () => await props.fetchPosts())();
+    (async () => {
+      if (props.posts.length === 0) await props.fetchPosts();
+    })();
   }, []);
 
   return (
     <Screen>
       <Container>
         <HomeHeader>
-          <Heading>RaiseHope</Heading>
-          <TouchableOpacity>
-            <MaterialIcon
-              name="chat"
-              color={theme.palette.white}
-              size={spacing[6]}
-              style={{ transform: [{ rotateY: "180deg" }] }}
-            />
-          </TouchableOpacity>
+          <HeaderContent>
+            <Heading>RaiseHope</Heading>
+            <TouchableOpacity>
+              <MaterialIcon
+                name="chat"
+                color={theme.palette.white}
+                size={spacing[6]}
+              />
+            </TouchableOpacity>
+          </HeaderContent>
+          {!isConnected && (
+            <LostConnectionBanner>
+              <LostConnectionBannerText>
+                No Internet Connection.
+              </LostConnectionBannerText>
+            </LostConnectionBanner>
+          )}
         </HomeHeader>
 
         <FlatList
@@ -76,7 +102,7 @@ function HomeScreen(props: HomeScreenProps) {
 }
 
 const mapDispatchToProps = (dispatch: any) => ({
-  fetchPosts: async () => await dispatch(await doFetchPosts()),
+  fetchPosts: () => dispatch(doFetchPosts()),
 });
 
 const mapStateToProps = (state: any) => {

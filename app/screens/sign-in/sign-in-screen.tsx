@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { spacing, typography } from "../../config";
 import styled from "@emotion/native";
 import { SignInScreenProps } from "./sign-in-screen.props";
+import { useTheme } from "@emotion/react";
 
 const Container = styled.View({
   paddingHorizontal: spacing[5],
@@ -40,6 +41,7 @@ const SignUpButton = styled.Text(props => ({
 }));
 
 function SignInScreen(props: SignInScreenProps) {
+  const theme = useTheme();
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
 
@@ -67,6 +69,7 @@ function SignInScreen(props: SignInScreenProps) {
         <SignInButton
           isLoading={props.isLoading}
           error={props.error}
+          backgroundColor={theme.palette.white}
           onPress={() => props.signIn(email, password)}
           disabled={!email || !password}>
           Sign in

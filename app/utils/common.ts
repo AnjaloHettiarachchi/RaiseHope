@@ -1,6 +1,7 @@
 import { firebase, storage } from "../firebase";
 import "react-native-get-random-values";
 import uuid from "uuid";
+import { Asset } from "expo-asset";
 
 export function currencyFormat(num: number) {
   return `Rs. ${num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}`;
@@ -30,4 +31,9 @@ export async function uploadImage(uri: string) {
     throw new Error("Cover Image upload failed.");
 
   return uploadTask.ref.getDownloadURL();
+}
+
+export async function getCachedAssets(coverImages: string[]) {
+  const assets = await Asset.loadAsync(coverImages);
+  return assets.map(a => a.localUri);
 }

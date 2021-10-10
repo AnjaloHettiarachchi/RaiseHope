@@ -145,7 +145,7 @@ const PostView: React.FC<PostViewProps> = ({
           onLoadEnd={() => setIsCoverImageLoading(false)}
           imageStyle={styles.coverImage}>
           {isCoverImageLoading ? (
-            <ActivityIndicator color={theme.primary} />
+            <ActivityIndicator color={theme.palette.white} />
           ) : (
             <LinearGradient colors={["transparent", "rgba(0, 0, 0, .5)"]}>
               <CardTitle>{title}</CardTitle>
