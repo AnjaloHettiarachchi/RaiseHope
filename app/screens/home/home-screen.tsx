@@ -6,7 +6,12 @@ import { spacing } from "../../config";
 import styled from "@emotion/native";
 import { HomeScreenProps } from "./home-screen.props";
 import { useTheme } from "@emotion/react";
-import { FlatList, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import { doFetchPosts } from "../../actions/posts/posts";
 import PostView from "../../components/post-view/post-view";
@@ -88,14 +93,28 @@ function HomeScreen(props: HomeScreenProps) {
           )}
         </HomeHeader>
 
-        <FlatList
-          data={props.posts}
-          style={styles.flatList}
-          refreshing={isRefreshing}
-          showsVerticalScrollIndicator={false}
-          onRefresh={async () => await refreshPosts()}
-          renderItem={post => <PostView {...post.item} />}
-        />
+        {props.posts.length === 0 ? (
+          <ActivityIndicator color={theme.palette.white} />
+        ) : (
+          <FlatList
+            indicatorStyle="white"
+            data={props.posts}
+            style={styles.flatList}
+            refreshing={isRefreshing}
+            showsVerticalScrollIndicator={false}
+            onRefresh={async () => await refreshPosts()}
+            renderItem={post => (
+              <PostView
+                {...post.item}
+                onPress={() =>
+                  props.navigation.navigate("ViewPost", {
+                    postId: post.item.id,
+                  })
+                }
+              />
+            )}
+          />
+        )}
       </Container>
     </Screen>
   );

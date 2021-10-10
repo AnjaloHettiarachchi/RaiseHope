@@ -23,3 +23,8 @@ export async function create(post: CreatePost) {
   post.coverImage = await uploadImage(post.coverImage);
   return await firestore.collection("posts").doc().set(post);
 }
+
+export async function get(postId: string) {
+  const postSnapshot = await firestore.collection("posts").doc(postId).get();
+  return postSnapshot.data() as Post;
+}

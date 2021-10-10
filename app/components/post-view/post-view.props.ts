@@ -31,4 +31,8 @@ export interface PostViewProps {
    * No. of Shares property of the Post.
    */
   shares: number;
+  /**
+   * `onPress` event for the PostView
+   */
+  onPress: () => void;
 }

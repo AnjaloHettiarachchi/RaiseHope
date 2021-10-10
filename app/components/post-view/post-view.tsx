@@ -3,18 +3,15 @@ import { PostViewProps } from "./post-view.props";
 import styled from "@emotion/native";
 import {
   ActivityIndicator,
-  Alert,
   ColorValue,
   Pressable,
   StyleSheet,
-  View,
 } from "react-native";
 import { spacing, typography } from "../../config";
 import { LinearGradient } from "expo-linear-gradient";
 import { useTheme } from "@emotion/react";
-import { ProgressBar } from "react-native-paper";
-import { currencyFormat } from "../../utils/common";
 import MaterialIcon from "react-native-vector-icons/MaterialCommunityIcons";
+import FundingProgressView from "../funding-progress-view/funding-progress-view";
 
 const CardView = styled.View(props => ({
   display: "flex",
@@ -55,42 +52,6 @@ const CardFooter = styled.View(props => ({
   borderTopColor: props.theme.palette.blueGrey[100],
 }));
 
-const FundingProgressView = (props: {
-  currentAmount: number;
-  goalAmount: number;
-}) => {
-  const theme = useTheme();
-
-  const StyledProgressBar = styled(ProgressBar)({
-    marginTop: spacing[1],
-    marginBottom: spacing[3],
-    borderRadius: 5,
-  });
-
-  const CurrencyText = styled.Text(props => ({
-    color: props.theme.text[300],
-    fontFamily: typography.primary.medium,
-  }));
-
-  const StyledText = styled.Text(props => ({
-    color: props.theme.text[100],
-  }));
-
-  return (
-    <View>
-      <StyledText>
-        <CurrencyText>{currencyFormat(props.currentAmount)}</CurrencyText>
-        {" raised of "}
-        <CurrencyText>{currencyFormat(props.goalAmount)}</CurrencyText> goal
-      </StyledText>
-      <StyledProgressBar
-        color={theme.palette.amber[700] as string}
-        progress={props.currentAmount / props.goalAmount}
-      />
-    </View>
-  );
-};
-
 const IconWithCount = (props: {
   icon: string;
   count: number;
@@ -121,7 +82,6 @@ const IconWithCount = (props: {
 };
 
 const PostView: React.FC<PostViewProps> = ({
-  id,
   title,
   coverImage,
   description,
@@ -129,6 +89,7 @@ const PostView: React.FC<PostViewProps> = ({
   raisedAmount,
   likes,
   shares,
+  onPress,
 }) => {
   const theme = useTheme();
 
@@ -136,7 +97,7 @@ const PostView: React.FC<PostViewProps> = ({
     undefined,
   );
   return (
-    <Pressable onPress={() => Alert.alert(`postId: ${id}`)}>
+    <Pressable onPress={onPress}>
       <CardView>
         <CoverImage
           source={{ uri: coverImage }}
